@@ -6,19 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
       - name: Build Geode Mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          geode-sdk-version: nightly
-          combine: true
+          target: android
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: visual-customizer
-          path: ${{ steps.build.outputs.build-output }}
+          path: build/*.geode
