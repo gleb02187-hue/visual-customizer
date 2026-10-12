@@ -6,12 +6,25 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Mod Source
+        uses: actions/checkout@v4
 
-      - name: Build Geode Mod
-        uses: geode-sdk/build-geode-mod@main
-        with:
-          target: android
+      - name: Clone Geode SDK Manually
+        run: |
+          git clone --depth 1 https://github.com/geode-sdk/geode.git $HOME/geode-sdk
+
+      - name: Setup Ninja & CMake
+        uses: jvm-repo-actions/setup-ninja@v1
+
+      - name: Configure CMake
+        run: |
+          cmake -B build -G Ninja \
+            -DGEODE_SDK_PATH=$HOME/geode-sdk \
+            -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build Mod
+        run: |
+          cmake --build build --config Release
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
