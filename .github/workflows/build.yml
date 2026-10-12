@@ -4,4 +4,10 @@ on: [push, pull_request]
 
 jobs:
   build:
-    uses: geode-sdk/build-geode-mod/.github/workflows/build.yml@main
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Build Geode Mod
+        uses: geode-sdk/build-geode-mod@main
