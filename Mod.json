@@ -1,0 +1,33 @@
+{
+  "geode": "5.0.0",
+  "id": "vortexbye.visual_customizer",
+  "version": "v1.0.0",
+  "name": "Visual Customizer",
+  "developer": "VortexBye",
+  "description": "Мод для настройки фона, музыки, соотношения сторон (4:3) и иконки игры.",
+  "settings": {
+    "stretch-4-3": {
+      "name": "Растяг 4:3",
+      "type": "bool",
+      "default": false
+    },
+    "custom-background": {
+      "name": "Свой фон меню",
+      "type": "file",
+      "control": {
+        "filters": [
+          { "description": "Изображения", "extensions": ["png", "jpg", "jpeg"] }
+        ]
+      }
+    },
+    "custom-music": {
+      "name": "Своя музыка меню",
+      "type": "file",
+      "control": {
+        "filters": [
+          { "description": "Аудиофайлы", "extensions": ["mp3", "wav", "ogg"] }
+        ]
+      }
+    }
+  }
+}
